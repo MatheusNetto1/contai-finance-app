@@ -1,9 +1,8 @@
-export type LaunchType = 'Crédito' | 'Débito';
-
+// Launch.ts
 export interface Launch {
-  id: string;
-  date: string; // ou usar Date, dependendo do uso
+  id: number;
+  date: string;
   description: string;
   value: number;
-  type: LaunchType;
+  type: "Credit" | "Debit";
 }

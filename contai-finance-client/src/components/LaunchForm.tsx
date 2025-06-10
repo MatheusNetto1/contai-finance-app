@@ -1,8 +1,11 @@
+// LaunchForm.tsx (alteração: atualização imediata da tabela)
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { launchSchema, LaunchFormData } from "../schemas/launchSchema";
+import { launchSchema } from "../schemas/launchSchema";
+import type { LaunchFormData } from "../schemas/launchSchema";
 import { createLaunch } from "../services/launchService";
 import { useState } from "react";
+import { useLaunches } from "../hooks/useLaunches";
 
 export default function LaunchForm() {
   const {
@@ -15,12 +18,14 @@ export default function LaunchForm() {
   });
 
   const [success, setSuccess] = useState(false);
+  const { reload } = useLaunches();
 
   const onSubmit = async (data: LaunchFormData) => {
     try {
       await createLaunch(data);
       reset();
       setSuccess(true);
+      reload();
       setTimeout(() => setSuccess(false), 2000);
     } catch (err) {
       console.error("Failed to create launch", err);
@@ -33,12 +38,10 @@ export default function LaunchForm() {
       className="space-y-4 bg-white p-6 rounded-2xl shadow-md"
     >
       <h2 className="text-xl font-semibold text-gray-700">New Launch</h2>
-
       <div>
         <label className="block mb-1 font-medium">Date</label>
         <input
-          type="text"
-          placeholder="dd/mm/yyyy"
+          type="date"
           {...register("date")}
           className="w-full border border-gray-300 rounded-md p-2"
         />
@@ -46,7 +49,6 @@ export default function LaunchForm() {
           <p className="text-red-500 text-sm">{errors.date.message}</p>
         )}
       </div>
-
       <div>
         <label className="block mb-1 font-medium">Description</label>
         <input
@@ -58,7 +60,6 @@ export default function LaunchForm() {
           <p className="text-red-500 text-sm">{errors.description.message}</p>
         )}
       </div>
-
       <div>
         <label className="block mb-1 font-medium">Amount</label>
         <input
@@ -71,7 +72,6 @@ export default function LaunchForm() {
           <p className="text-red-500 text-sm">{errors.value.message}</p>
         )}
       </div>
-
       <div>
         <label className="block mb-1 font-medium">Type</label>
         <select
@@ -79,14 +79,13 @@ export default function LaunchForm() {
           className="w-full border border-gray-300 rounded-md p-2"
         >
           <option value="">Select</option>
-          <option value="Crédito">Credit</option>
-          <option value="Débito">Debit</option>
+          <option value="Credit">Credit</option>
+          <option value="Debit">Debit</option>
         </select>
         {errors.type && (
           <p className="text-red-500 text-sm">{errors.type.message}</p>
         )}
       </div>
-
       <button
         type="submit"
         disabled={isSubmitting}
@@ -94,7 +93,6 @@ export default function LaunchForm() {
       >
         {isSubmitting ? "Saving..." : "Save"}
       </button>
-
       {success && (
         <p className="text-green-600 mt-2">Launch saved successfully!</p>
       )}

@@ -1,7 +1,6 @@
-import LaunchesPage from './pages/LaunchesPage';
+// App.tsx
+import LaunchesPage from "./pages/LaunchesPage";
 
-function App() {
+export default function App() {
   return <LaunchesPage />;
 }
-
-export default App;
