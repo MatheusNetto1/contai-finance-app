@@ -1,6 +1,6 @@
 // Launch.ts
 export interface Launch {
-  id: number;
+  id: string;
   date: string;
   description: string;
   value: number;

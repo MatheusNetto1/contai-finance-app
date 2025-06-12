@@ -1,7 +1,7 @@
 // formatCurrency.ts
-export function formatCurrency(value: number) {
-  return value.toLocaleString("pt-BR", {
+export function formatCurrency(value: number): string {
+  return new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
-  });
+  }).format(value);
 }

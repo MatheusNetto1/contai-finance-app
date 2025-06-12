@@ -1,4 +1,4 @@
-// LaunchForm.tsx (alteração: atualização imediata da tabela)
+// LaunchForm.tsx
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { launchSchema } from "../schemas/launchSchema";
@@ -22,7 +22,12 @@ export default function LaunchForm() {
 
   const onSubmit = async (data: LaunchFormData) => {
     try {
-      await createLaunch(data);
+      await createLaunch({
+        date: data.date,
+        description: data.description,
+        amount: data.value,
+        type: data.type,
+      });
       reset();
       setSuccess(true);
       reload();
