@@ -23,8 +23,7 @@ ContAI Finance App é uma aplicação Fullstack de gestão financeira. O sistema
 - **Backend** - API REST
 - **Frontend** - SPA
 
-
-# Features
+## Features
 
 - Criar e listar transações
 - Catalogar como "Credit" ou "Debit"
@@ -35,7 +34,7 @@ ContAI Finance App é uma aplicação Fullstack de gestão financeira. O sistema
 
 ---
 
-# Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 contai-finance-app/
@@ -45,18 +44,16 @@ contai-finance-app/
 ├── README.md
 └── .gitignore
 ```
-
 ---
-
-# Backend: `contai-finance-api`
+## Backend: `contai-finance-api`
 ```
 contai-finance-api/
 ├── src/
 │   ├── controllers/     # Lógica de controle das rotas
-│   ├── entities/        # Entidades do banco de dados (TypeORM)
+│   ├── entities/        # Entidades do banco de dados
 │   ├── migrations/      # Scripts de migração
 │   ├── routes/          # Definição de rotas da API
-│   ├── app.ts           # Configuração da aplicação (middlewares, rotas)
+│   ├── app.ts           # Configuração da aplicação
 │   ├── data-source.ts   # Configuração do TypeORM
 │   └── server.ts        # Ponto de entrada do servidor
 ├── .env.exemple
@@ -66,18 +63,15 @@ contai-finance-api/
 └── ...
 ```
 
-
-# Tecnologias principais
+## Tecnologias principais
 
 - Node.js
 - Express.js
 - TypeORM
 - PostgreSQL (via Docker)
 - TypeScript
-
 ---
-
-# Frontend: `contai-finance-client`
+## Frontend: `contai-finance-client`
 
 ```
 contai-finance-client/
@@ -87,7 +81,7 @@ contai-finance-client/
 │   ├── contexts/        # React Context API
 │   ├── hooks/           # Hooks customizados
 │   ├── pages/           # Páginas da aplicação
-│   ├── schemas/         # Schemas de validação (ex: Zod, Yup)
+│   ├── schemas/         # Schemas de validação
 │   ├── services/        # Integração com APIs
 │   ├── types/           # Tipagens globais do TypeScript
 │   ├── utils/           # Funções utilitárias
@@ -99,18 +93,15 @@ contai-finance-client/
 └── ...
 ```
 
-
-# Tecnologias principais
+## Tecnologias principais
 
 - React
 - TypeScript
 - Vite
 - Zod/Yup (para validações)
 - React Context + Hooks
-
 ---
-
-# Docker
+## Docker
 
 O projeto utiliza Docker apenas para subir o banco de dados PostgreSQL necessário para o backend.
 ```bash
@@ -120,8 +111,7 @@ docker-compose up -d
 Isso iniciará um container PostgreSQL acessível nas configurações definidas no seu .env.
 
 ---
-
-# Como rodar o projeto
+## Como rodar o projeto
 
 Certifique-se de que o Docker está rodando e o container do PostgreSQL está ativo.
 
@@ -158,7 +148,6 @@ npm run dev
 ```
 
 ---
-
-# Licença
+## Licença
 
 Este projeto está sob a licença MIT.
