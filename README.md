@@ -2,7 +2,27 @@
 
 ContAI Finance App é uma aplicação Fullstack de gestão financeira. O sistema permite ao usuário criar e visualizar transações financeiras ("launches") organizados como "credit" ou "debits".
 
----
+
+# Decisões Arquiteturais
+
+- **Layout monorepo** para manter o backend e o frontend juntos no mesmo repositório.
+- **PostgreSQL** como banco de dados relacional para um armazenamento financeiro robusto.
+- **TypeORM** como ORM para interagir com o PostgreSQL de forma segura e tipada.
+- **Zod** para validação de schemas no frontend.
+- **React Hook Form** para manipulação de formulários leve e performática.
+- **Hook personalizado** (`useLaunches`) para centralizar a lógica de requisição e recarregamento de dados.
+- **Transações agrupadas e resumidas por mês**, utilizando funções utilitárias no lado do cliente.
+
+## Modelo Arquitetural
+
+- **Backend** - Arquitetura em Camadas
+- **Frontend** - Arquitetura Modular + Componentes
+
+## Modelo de Entrega
+
+- **Backend** - API REST
+- **Frontend** - SPA
+
 
 # Features
 
@@ -28,7 +48,7 @@ contai-finance-app/
 
 ---
 
-# Backend: contai-finance-api
+# Backend: `contai-finance-api`
 ```
 contai-finance-api/
 ├── src/
@@ -57,7 +77,7 @@ contai-finance-api/
 
 ---
 
-# Frontend: contai-finance-client
+# Frontend: `contai-finance-client`
 
 ```
 contai-finance-client/
@@ -105,20 +125,32 @@ Isso iniciará um container PostgreSQL acessível nas configurações definidas 
 
 Certifique-se de que o Docker está rodando e o container do PostgreSQL está ativo.
 
-1. Suba o banco de dados:
+1. Clone o repositório:
+```bash
+git clone https://github.com/MatheusNetto1/contai-finance-app.git
+cd contai-finance-app
+```
+
+2. Suba o banco de dados:
 ```bash
 cd contai-finance-api
 docker-compose up -d
 ```
 
-2. Rode o backend localmente:
+3. Crie um arquivo `.env` baseado no `.env.example`:
+```bash
+cp .env.example .env
+```
+Atualize as variáveis no .env
+
+4. Rode o backend localmente:
 ```bash
 cd contai-finance-api
 npm install
 npm run dev
 ```
 
-3. Rode o frontend localmente:
+5. Rode o frontend localmente:
 ```bash
 cd contai-finance-client
 npm install
